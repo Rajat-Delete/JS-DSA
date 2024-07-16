@@ -38,3 +38,34 @@ order and s consist of lowercase English letters.
 All the characters of order are unique.
 
 */
+
+
+var customSortString = function(order, s) {
+    let arr= s.split('');
+    //traversing the entire order String one by one characters
+    for(let i=0;i<order.length-1;i++){
+        //check for the match in s
+        let isMatch = false;
+        let index=0;
+        for(let j=0;j<arr.length-1;j++){
+            if(arr[j] === order[i]){
+                isMatch = true;
+            }
+
+            if(isMatch){
+                let temp = arr[index];
+                arr[index] = arr[j];
+                arr[j] = temp;
+                index++;
+            }
+        }
+        if(isMatch === false){
+            console.log('Inside false');
+            return arr;
+        }
+        console.log(arr);
+    }
+};
+
+
+console.log(customSortString('bcafg','abcd'));
